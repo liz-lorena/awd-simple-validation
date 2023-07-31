@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Form Validation/Regular Expressions</title>
+
+	<!--Stylesheet-->
+	<link rel="stylesheet" href="style.css">
+	<!--Version 4 of Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	<!--jQuery-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/61038b3f9a.js"></script>
+	<!--Scripts-->
+	<script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+
+	<div class="container-fluid">
+
+		<form class="form-group" onsubmit='return formValidation()' action="form.php" method="post" id="form">
+			<h2>Simple Registration Form</h2>
+			<label>First Name:</label>
+			<input class="form-control" type='text' name="firstName" id='firstname' /><br />
+			<p id="p1"></p>
+			<!--This segment displays the validation rule for name-->
+
+			<label>Last Name:</label>
+			<input class="form-control" type='text' name="lastName" id='lastname' /><br />
+			<p id="p2"></p>
+			<!--This segment displays the validation rule for name-->
+
+			<label>Email:</label>
+			<span id="sub">Must be in format name@email.TLD</span>
+			<input class="form-control" type='text' name="email" id='email' /><br />
+			<p id="p3"></p>
+			<!--This segment displays the validation rule for email-->
+
+			<label>Telephone:</label>
+			<span id="sub">Must be in format (###) ###-####</span>
+			<input class="form-control" type='text' name="phone" id='phone' /><br />
+			<p id="p4"></p>
+			<!--This segment displays the validation rule for user name-->
+
+			<label>City:</label>
+			<input class="form-control" type='text' name="city" id='city' /><br />
+			<p id="p5"></p>
+			<!--This segment displays the validation rule for city-->
+
+			<label>State:</label>
+			<select class="form-control" name="state" id='state'>
+			<option>(Choose a state)</option>
+			<option>Alabama</option>
+			<option>Alaska</option>
+			<option>Arizona</option>
+			<option>Arkansas</option>
+			<option>California</option>
+			<option>Colorado</option>
+			<option>Connecticut</option>
+			<option>Delaware</option>
+			<option>Florida</option>
+			<option>Georgia</option>
+			<option>Hawaii</option>
+			<option>Idaho</option>
+			<option>Illinois</option>
+			<option>Indiana</option>
+			<option>Iowa</option>
+			<option>Kansas</option>
+			<option>Kentucky</option>
+			<option>Louisiana</option>
+			<option>Maine</option>
+			<option>Maryland</option>
+			<option>Massachusetts</option>
+			<option>Michigan</option>
+			<option>Minnesota</option>
+			<option>Mississippi</option>
+			<option>Missouri</option>
+			<option>Montana</option>
+			<option>Nebraska</option>
+			<option>Nevada</option>
+			<option>New Hampshire</option>
+			<option>New Jersey</option>
+			<option>New Mexico</option>
+			<option>New York</option>
+			<option>North Carolina</option>
+			<option>North Dakota</option>
+			<option>Ohio</option>
+			<option>Oklahoma</option>
+			<option>Oregon</option>
+			<option>Pennsylvania</option>
+			<option>Rhode Island</option>
+			<option>South Carolina</option>
+			<option>South Dakota</option>
+			<option>Tennessee</option>
+			<option>Texas</option>
+			<option>Utah</option>
+			<option>Vermont</option>
+			<option>Virginia</option>
+			<option>Washington</option>
+			<option>West Virginia</option>
+			<option>Wisconsin</option>
+			<option>Wyoming</option>
+		</select><br />
+			<p id="p6"></p>
+			<!--This segment displays the validation rule for selection-->
+
+			<label>Zip Code: </label>
+			<span id="sub">Must be in format ##### or #####-####</span>
+			<input class="form-control" type='text' name="zip" id='zip' /><br />
+			<p id="p7"></p>
+			<!--This segment displays the validation rule for zip-->
+
+			<input type="checkbox" name="checkterms" id="checkterms" value="Yes"> <strong>I agree to terms</strong> <a id="terms">Show me!</a>
+			<p id="p8"></p>
+			<!--This segment displays alert if terms check box is not checked-->
+			<br>
+			<input type='submit' id="submit" value='Submit' class="btn btn-primary" /><br />
+		</form>
+
+		<p>Check out the code <a href="https://github.com/irisoflys/simple-validation-fall-2017">here</a>!</p>
+
+
+
+		<!-- The Modal -->
+		<div id="termsModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header nav navbar navbar-left">
+					<h4>Terms and Conditions</h4>
+					<span class="close" id="x">&times;</span>
+				</div>
+				<div class="modal-body nav navbar navbar-center">
+					<h5>What is Lorem Ipsum?</h5>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+						It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+						desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+					</p>
+					<h5>Where does it come from?</h5>
+					<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked
+						up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
+						Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
+						in section 1.10.32.
+					</p>
+					<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English
+						versions from the 1914 translation by H. Rackham.
+					</p>
+					<h5>Why do we use it?</h5>
+					<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content
+						here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+						Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+					</p>
+					<h5>Where can I get some?</h5>
+					<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem
+						Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses
+						a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic
+						words etc.
+					</p>
+				</div>
+				<div class="modal-footer nav navbar navbar-right">
+					<button id="btnClose" class="btn btn-outline-secondary" style="color:black;">Close</button> <button id="btnCheck" class="btn btn-primary">I Agree</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script>
+		// Get the modal
+		var modal = document.getElementById('termsModal');
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("terms");
+
+		// Get the button that closes the modal
+		var btnClose = document.getElementById("btnClose");
+
+		// Get the button that closes the modal and marks the checkmark box
+		var btnCheck = document.getElementById("btnCheck");
+
+		// Get whether if the checkmark box is checked or not
+		var check = document.getElementById("checkterms");
+
+		// Get the <span> element that closes the modal
+		var x = document.getElementById("x");
+
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		x.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		// When the user clicks on close button, close the modal
+		btnClose.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		// When the user clicks on close button, check the checkmark box and close the modal
+		btnCheck.onclick = function() {
+			if (check.checked == false) {
+				document.getElementById("checkterms").checked = true;
+			}
+			modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+</body>
+
+</html>
